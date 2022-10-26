@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova&family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Api</title>
+    <link rel="icon" type="image" href="icon.png">
+  </head>
+  <body>
+
+    
+    <div class="wrapper">
+      <header>
+        <img src="back.png" class="background" />
+        <img src="foreupdate.png" class="foreground" />
+        <h1 class="title">API PROJECT</h1>
+      </header>
+
+      <!------------------------------------------------------------------------------------------------------->
+
+
+      <section>
+        <!--Text Inside Padding-->
+        <div class="full">
+        <img src="icon.png" class="icon">
+<h1 class="min">Api Project </h1>
+</div>
+<br>2.The api we used is Bored api</br>
+<br>3. This api suggests what to do when your bored </br>
+<br>4. Here is a example</br>
+<button id = "button" class="btn">Are You Bored?</button> 
+       <p id="setup"></p>
+       <p id="punchline"></p>
+       <p id="error"></p>
+       <!--Text Inside Padding-->
+
+       <!--line breaks to not break the effect-->
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       <br></br>
+       
+
+       <!--line breaks to not break the effect-->
+
+</section>
+
+
+
+    <!--css-->
+    <style>
+      body {
+        margin: 0;
+      }
+      
+     
+      .btn{
+        height: 100px;
+        width: 100px;
+        font-family: cursive;
+      }
+     
+      .icon{
+        height: 20px;
+        width: 15px;
+        float:left;
+        
+        
+      }
+      .min{
+        font-size: 2rem;
+        color: yellow;
+        text-align: left;
+      }
+
+      .wrapper {
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        perspective: 10px;
+      }
+
+      header {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        transform-style: preserve-3d;
+        z-index: -1;
+      }
+      .background {
+        transform: translateZ(-10px) scale(2);
+      }
+      .foreground {
+        transform: translateZ(-5px) scale(1.5);
+        
+        
+      }
+
+      .background,
+      .foreground {
+        position: absolute;
+        height: 100vw;
+        width: 100vw;
+        object-fit: cover;
+        z-index: -1;
+        text-shadow: 0 0 5px black;
+      }
+
+      .title {
+        font-size: 7rem;
+        color: white;
+        text-shadow: 0 0 5px black;
+        font-family: 'Ibarra Real Nova', serif;
+        font-family: 'Rubik', sans-serif;
+      }
+      section {
+        font-size: 1rem;
+        padding: 2rem;
+        background-color: #333;
+        font-family: cursive;
+        color: white;
+        text-align: center;
+      } 
+    </style>
+    <!--css-->
+
+
+    <!--script-->
+    <script>
+
+      document.addEventListener("click", function (event) {
+          if !(event.target.matches("#button")) return;
+          fetch("https://www.boredapi.com/api/activity")
+          .then((response)) => response.json())
+          .then((data) => renderActivity())
+          .catch(() => renderError()); 
+      });
+
+          function renderActivity(data)
+          const setup = document.getElementById("setup");
+          const punchline = document.getElementById("punchline");
+          const error = document.getElementById("error");
+          error.innerHTML = "";
+          setup.innerHTML = data.setup;
+          punchline.innerHTML = data.punchline;
+      }
+      function renderError() {
+        const error = document.getElementById("error");
+        error.innerHTML = "something went wrong";
+        
+      }
+    </script>
+    <!--script-->
+
+
+
+
+
+
+  </body>
+</html>
